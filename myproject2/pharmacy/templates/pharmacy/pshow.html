@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pharmacy Records</title>
+         {% load staticfiles %}
+         <link rel="stylesheet" href="{% static 'pharmacy/css/bootstrap.css' %}"/>
+    </head>
+    <body>
+     <h1>Pharmacy report</h1>
+    <table class="table table-striped table-bordered table-sm">
+        <thead class="thead-dark">
+        <tr id="p1">
+            <th>Pharmacy ID</th>
+            <th>Pharmacy Name</th>
+            <th>Pharmacy Email</th>
+            <th>Pharmacy Address</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+    {% for pharmacy in pharmacies %}
+        <tr id="p2">
+
+            <td>{{ pharmacy.pid }}</td>
+            <td>{{ pharmacy.pname }}</td>
+            <td>{{ pharmacy.pemail }}</td>
+            <td>{{ pharmacy.paddress }}</td>
+            <td>
+                <a href="/pedit/{{ pharmacy.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
+                <a href="/pdelete/{{ pharmacy.id }}">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <center><a href="/padd" class="btn btn-primary">Add New Record</a></center>
+     <center> <a href="/index" class="btn btn-primary">HOMEPAGE</a></center>
+    </body>
+    </html>

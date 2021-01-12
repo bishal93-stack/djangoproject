@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Medicine Records</title>
+         {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'pharmacy/css/bootstrap.css' %}"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            h2{
+
+                text-align: left;
+                color:black;
+            }
+            h3{
+                color :black;
+            }
+            .search-container {
+                float: right;
+            }
+
+
+
+        </style>
+    </head>
+    <body>
+    <h1>Welcome to Sameer Pharmacy Contact Us:9860015901 </h1>
+    <h2>Medicine Reports:Monthly </h2>
+    <h3>Month:June</h3>
+    <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+    </div>
+
+    <table class="table table-striped table-bordered table-sm">
+        <thead class="thead-dark">
+        <tr id="e1">
+            <th>Month</th>
+            <th>Medicine ID</th>
+            <th>IMAGE</th>
+            <th>Medicine Name</th>
+            <th>STOCK</th>
+            <th>Medicine Price(Rs)</th>
+            <th>Total Price</th>
+            <th>Actions</th>
+
+
+
+        </tr>
+        </thead>
+        <tbody>
+    {% for medicine in medicines %}
+        <tr id="e2">
+
+            <td>{{ medicine.monthadded }}</td>
+            <td>{{ medicine.tid }}</td>
+            <td><img src="static/pharmacy/css/mirtaz.jpg" height="42" width="42"></td>
+            <td>{{ medicine.tname }}</td>
+            <td>{{ medicine.tquantity }}</td>
+            <td>{{ medicine.tprice }}</td>
+            <td>{{ medicine.ttprice }}</td>
+
+
+
+              <td>
+                <a href="/medit/{{ medicine.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
+                <a href="/mdelete/{{ medicine.id }}">Delete</a>
+            </td>
+
+
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <center>   <a href="/index" class="btn btn-primary">HOME PAGE</a></center>
+    </body>
+    </html>

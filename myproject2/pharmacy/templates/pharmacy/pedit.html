@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Index</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'static/pharmacy/style.css' %}"/>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+         <link rel="stylesheet" href="{% static '/pharmacy/css/bootstrap.css' %}"/>
+        <link rel="stylesheet" href="{% static '/pharmacy/js/bootstrap.js' %}"/>
+
+        <link rel="stylesheet" href="{% static '/pharmacy/js/jquery-3.3.1.js' %}"/>
+
+        <link rel="stylesheet" href="{% static '/pharmacy/js/proper.js' %}"/>
+    </head>
+    <body>
+    <form method="POST" class="post-form" action="/pupdate/{{pharmacy.id}}">
+            {% csrf_token %}
+        <div class="container">
+    <br>
+        <div class="form-group row">
+        <label class="col-sm-1 col-form-label"></label>
+        <div class="col-sm-4">
+        <h3>Update Details</h3>
+        </div>
+      </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Pharmacy Id:</label>
+        <div class="col-sm-4">
+            <input type="text" name="pid" id="id_pid" required maxlength="20" value="{{ pharmacy.pid }}"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Pharmacy Name:</label>
+        <div class="col-sm-4">
+            <input type="text" name="pname" id="id_pname" required maxlength="100" value="{{ pharmacy.pname }}" />
+        </div>
+      </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Employee Email:</label>
+        <div class="col-sm-4">
+            <input type="email" name="pemail" id="id_pemail" required maxlength="254" value="{{ pharmacy.pemail }}" />
+        </div>
+      </div>
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Pharmacy Address:</label>
+        <div class="col-sm-4">
+            <input type="text" name="paddress" id="id_paddress" required maxlength="15" value="{{ pharmacy.paddress }}" />
+        </div>
+      </div>
+        <div class="form-group row">
+    </body>
+        <label class="col-sm-1 col-form-label"></label>
+        <div class="col-sm-4">
+        <button type="submit" class="btn btn-success">Update</button>
+        </div>
+      </div>
+        </div>
+    </form>
+    </html>
